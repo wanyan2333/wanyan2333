@@ -97,14 +97,14 @@ def uptime(created):
 
 THEMES = {
     "dark": dict(bg="#0d1117", bar="#161b22", border="#30363d", fg="#c9d1d9", key="#ffa657", dots="#484f58",
-                 val="#a5d6ff", head="#7ee787", mute="#8b949e", prompt="#7F5AF0", art=("#7F5AF0", "#2CB67D"), face="#e6edf3", body="#5c636c", body2="#8b949e"),
+                 val="#a5d6ff", head="#7ee787", mute="#8b949e", prompt="#7F5AF0", art=("#7F5AF0", "#2CB67D"), face="#e6edf3"),
     "light": dict(bg="#ffffff", bar="#f6f8fa", border="#d0d7de", fg="#24292f", key="#953800", dots="#afb8c1",
-                  val="#0a3069", head="#116329", mute="#57606a", prompt="#6639ba", art=("#6639ba", "#1a7f37"), face="#c5ccd4", body="#6e7781", body2="#959ea8"),
+                  val="#0a3069", head="#116329", mute="#57606a", prompt="#6639ba", art=("#6639ba", "#1a7f37"), face="#afb8c1"),
 }
 
 W, LH, FS = 985, 20, 14
 CHAR_W = FS * 0.6
-ART_X, INFO_X, TOP = 22, 410, 74
+ART_X, INFO_X, TOP = 22, 360, 74
 INFO_COLS = 56
 
 
@@ -137,15 +137,15 @@ def art_svg(t, x0, y0, w, h, delay):
     out = [f'<linearGradient id="artg" gradientUnits="userSpaceOnUse" x1="{x0}" y1="{y0}" x2="{x0 + w}" y2="{y0 + h}">'
            f'<stop offset="0" stop-color="{t["art"][0]}"/><stop offset="1" stop-color="{t["art"][1]}"/></linearGradient>']
     if ART_STYLE == "dots":
-        sx, sy = 3.6, 4.3
+        sx, sy = 4.2, 5.0
         ox = x0 + (w - len(rows[0]) * sx) / 2
         oy = y0 + (h - len(rows) * sy) / 2
         for r, line in enumerate(rows):
-            d = f'style="animation-delay:{delay + r * 0.02:.3f}s"'
-            for ch, stroke in (("c", "url(#artg)"), ("f", t["face"]), ("b", t["body"]), ("B", t["body2"])):
+            d = f'style="animation-delay:{delay + r * 0.025:.3f}s"'
+            for ch, stroke in (("c", "url(#artg)"), ("f", t["face"])):
                 pts = "".join(f"M{ox + c * sx:.1f} {oy + r * sy:.1f}h0" for c, v in enumerate(line) if v == ch)
                 if pts:
-                    out.append(f'<path class="l" {d} d="{pts}" stroke="{stroke}" stroke-width="2.6" stroke-linecap="round"/>')
+                    out.append(f'<path class="l" {d} d="{pts}" stroke="{stroke}" stroke-width="3" stroke-linecap="round"/>')
     else:
         cw, chh = 8.4, 10.0
         ox = x0 + (w - len(rows[0]) * cw) / 2
