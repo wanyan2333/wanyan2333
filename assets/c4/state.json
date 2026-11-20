@@ -46,7 +46,7 @@
    0
   ],
   [
-   0,
+   1,
    0,
    0,
    0,
@@ -55,11 +55,21 @@
    0
   ]
  ],
- "turn": 1,
- "moves": [],
+ "turn": 2,
+ "moves": [
+  {
+   "col": 1,
+   "row": 5,
+   "player": 1,
+   "user": "wanyan2333",
+   "at": "2026-11-20 01:03 UTC"
+  }
+ ],
  "status": "playing",
  "win": [],
  "game": 1,
  "history": [],
- "players": {}
+ "players": {
+  "wanyan2333": 1
+ }
 }

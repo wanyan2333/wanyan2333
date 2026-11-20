@@ -37,6 +37,7 @@
 <circle cx="320.0" cy="264.0" r="21" fill="#ffffff"/>
 <circle cx="376.0" cy="264.0" r="21" fill="#ffffff"/>
 <circle cx="40.0" cy="320.0" r="21" fill="#ffffff"/>
+<circle cx="40.0" cy="320.0" r="21" fill="#8250df"><animateTransform attributeName="transform" type="translate" values="0 -350.0;0 0;0 -10;0 0" keyTimes="0;.6;.8;1" dur=".9s" calcMode="spline" keySplines=".55 0 1 .45;0 .55 .45 1;.55 0 1 .45" fill="freeze"/></circle>
 <circle cx="96.0" cy="320.0" r="21" fill="#ffffff"/>
 <circle cx="152.0" cy="320.0" r="21" fill="#ffffff"/>
 <circle cx="208.0" cy="320.0" r="21" fill="#ffffff"/>
