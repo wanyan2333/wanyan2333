@@ -25,23 +25,8 @@ PROFILE = {
     "Motto": "Prompt -> Code -> Ship",
 }
 
-ROBOT = [
-    '               ___|___',
-    "            .-'       '-.",
-    '           /  .-------.  \\',
-    '          |   | o   o |   |',
-    '          |   |  ___  |   |',
-    "           \\  '-------'  /",
-    "            '-.._____..-'",
-    '           .-----|-|-----.',
-    '       __ /  .---------.  \\ __',
-    '      |  ||  | > hello |  ||  |',
-    '      |__||  | > ship_ |  ||__|',
-    "          \\  '---------'  /",
-    "           '-------------'",
-    '            |__|     |__|',
-    '           /___\\     /___\\',
-]
+ART_STYLE = os.environ.get("ART_STYLE", "dots")   # "dots" (braille-style) or "blocks"
+ART_DIR = "assets/art"
 
 QUERY = """
 query($login: String!) {
@@ -112,9 +97,9 @@ def uptime(created):
 
 THEMES = {
     "dark": dict(bg="#0d1117", bar="#161b22", border="#30363d", fg="#c9d1d9", key="#ffa657", dots="#484f58",
-                 val="#a5d6ff", head="#7ee787", mute="#8b949e", prompt="#7F5AF0", art=("#7F5AF0", "#2CB67D")),
+                 val="#a5d6ff", head="#7ee787", mute="#8b949e", prompt="#7F5AF0", art=("#7F5AF0", "#2CB67D"), face="#e6edf3"),
     "light": dict(bg="#ffffff", bar="#f6f8fa", border="#d0d7de", fg="#24292f", key="#953800", dots="#afb8c1",
-                  val="#0a3069", head="#116329", mute="#57606a", prompt="#6639ba", art=("#6639ba", "#1a7f37")),
+                  val="#0a3069", head="#116329", mute="#57606a", prompt="#6639ba", art=("#6639ba", "#1a7f37"), face="#afb8c1"),
 }
 
 W, LH, FS = 985, 20, 14
@@ -146,11 +131,40 @@ def build_lines(s):
     return rows
 
 
+def art_svg(t, x0, y0, w, h, delay):
+    """Penguin portrait as braille-style dots or shaded blocks, revealed top-to-bottom."""
+    rows = open(f"{ART_DIR}/penguin-{ART_STYLE}.txt", encoding="utf-8").read().split("\n")
+    out = [f'<linearGradient id="artg" gradientUnits="userSpaceOnUse" x1="{x0}" y1="{y0}" x2="{x0 + w}" y2="{y0 + h}">'
+           f'<stop offset="0" stop-color="{t["art"][0]}"/><stop offset="1" stop-color="{t["art"][1]}"/></linearGradient>']
+    if ART_STYLE == "dots":
+        sx, sy = 4.2, 5.0
+        ox = x0 + (w - len(rows[0]) * sx) / 2
+        oy = y0 + (h - len(rows) * sy) / 2
+        for r, line in enumerate(rows):
+            d = f'style="animation-delay:{delay + r * 0.025:.3f}s"'
+            for ch, stroke in (("c", "url(#artg)"), ("f", t["face"])):
+                pts = "".join(f"M{ox + c * sx:.1f} {oy + r * sy:.1f}h0" for c, v in enumerate(line) if v == ch)
+                if pts:
+                    out.append(f'<path class="l" {d} d="{pts}" stroke="{stroke}" stroke-width="3" stroke-linecap="round"/>')
+    else:
+        cw, chh = 8.4, 10.0
+        ox = x0 + (w - len(rows[0]) * cw) / 2
+        oy = y0 + (h - len(rows) * chh) / 2
+        levels = {"#": ("url(#artg)", 1), "=": ("url(#artg)", .55), "-": (t["face"], .45), "+": (t["face"], .9)}
+        for r, line in enumerate(rows):
+            d = f'style="animation-delay:{delay + r * 0.05:.3f}s"'
+            for ch, (fill, op) in levels.items():
+                pts = "".join(f"M{ox + c * cw:.1f} {oy + r * chh:.1f}h{cw - 1:.1f}v{chh - 1:.1f}h-{cw - 1:.1f}z" for c, v in enumerate(line) if v == ch)
+                if pts:
+                    out.append(f'<path class="l" {d} d="{pts}" fill="{fill}" fill-opacity="{op}"/>')
+    return out
+
+
 def svg(s, theme):
     t = THEMES[theme]
     e = html.escape
     rows = build_lines(s)
-    H = TOP + max(len(ROBOT), len(rows) + 2) * LH + 48
+    H = TOP + (len(rows) + 2) * LH + 48
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
            f'font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,Liberation Mono,monospace" font-size="{FS}">',
            "<style>",
@@ -161,7 +175,7 @@ def svg(s, theme):
            "@keyframes type{to{clip-path:inset(0 0 0 0)}}",
            "@media (prefers-reduced-motion:reduce){.l,.typed{animation:none;opacity:1;clip-path:none}.cur{animation:none}}",
            "</style>",
-           f'<defs><linearGradient id="art" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{t["art"][0]}"/>'
+           f'<defs><linearGradient id="art_unused" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{t["art"][0]}"/>'
            f'<stop offset="1" stop-color="{t["art"][1]}"/></linearGradient></defs>',
            f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="12" fill="{t["bg"]}" stroke="{t["border"]}"/>',
            f'<path d="M.5 12.5a12 12 0 0 1 12-12h{W-25}a12 12 0 0 1 12 12V36H.5z" fill="{t["bar"]}"/>',
@@ -176,10 +190,8 @@ def svg(s, theme):
                f'<tspan fill="{t["val"]}">~</tspan><tspan fill="{t["mute"]}">$ </tspan>'
                f'<tspan fill="{t["fg"]}" class="typed">neofetch --ai</tspan></text>')
 
-    # ASCII art
-    for i, line in enumerate(ROBOT):
-        out.append(f'<text class="l" style="animation-delay:{1.3 + i*0.04:.2f}s" x="{ART_X}" y="{TOP + 14 + i*LH}" '
-                   f'fill="url(#art)" xml:space="preserve">{e(line)}</text>')
+    # portrait
+    out += art_svg(t, ART_X, TOP - 4, INFO_X - ART_X - 24, (len(rows) + 1) * LH, 1.2)
 
     # info lines
     for i, (kind, val) in enumerate(rows):
