@@ -1,107 +1,48 @@
-<!-- 顶部波浪横幅（带闪烁动画）：改 text= 和 desc= -->
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F0C29,50:7F5AF0,100:2CB67D&height=240&section=header&text=Hi,%20I'm%20Wanyan&fontSize=50&fontColor=ffffff&animation=twinkling&fontAlignY=36&desc=AI%20%C3%97%20Web%20%C3%97%20IoT%20Developer&descAlignY=56&descSize=20" />
-</p>
-
-<!-- 打字动画：lines= 用分号分隔，空格写成 + -->
-<p align="center">
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&color=2CB67D&center=true&vCenter=true&width=560&lines=%3E+喜欢用+AI+做点有意思的东西;%3E+和+Claude+%2F+GPT+结对编程中...;%3E+RAG+·+Web+·+IoT+·+Games;%3E+Prompt+→+Code+→+Ship+🚀" alt="Typing SVG" />
-  </a>
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=wanyan2333&label=Profile%20views&color=7F5AF0&style=flat" />
-  <img src="https://img.shields.io/badge/AI%20Pair%20Programmer-Claude-D97757?style=flat&logo=claude&logoColor=white" />
-  <a href="https://github.com/wanyan2333?tab=repositories"><img src="https://img.shields.io/badge/Repos-逛逛我的项目-2CB67D?style=flat&logo=github&logoColor=white" /></a>
-</p>
-
-## 👋 关于我
-
-```python
-class Wanyan:
-    handle    = "wanyan2333"
-    role      = "AI × Web × IoT Developer"
-    building  = ["PLC RAG 助手", "虚拟围栏项圈", "答题 RPG 小游戏", "个人博客"]
-    interests = ["AI / RAG", "Web 全栈", "IoT", "Game Dev"]
-    ai_stack  = ["Claude", "GPT", "Copilot", "Cursor"]
-    motto     = "Prompt → Code → Ship"
-```
-
-## 🚀 精选项目
-
-<p align="center">
-  <a href="https://github.com/wanyan2333/plc-rag-assistant"><img src="https://github-stats-extended.vercel.app/api/pin/?username=wanyan2333&repo=plc-rag-assistant&theme=tokyonight&hide_border=true" /></a>
-  <a href="https://github.com/wanyan2333/virtual-fence-collar"><img src="https://github-stats-extended.vercel.app/api/pin/?username=wanyan2333&repo=virtual-fence-collar&theme=tokyonight&hide_border=true" /></a>
-  <a href="https://github.com/wanyan2333/the-last-answer-quiz-rpg"><img src="https://github-stats-extended.vercel.app/api/pin/?username=wanyan2333&repo=the-last-answer-quiz-rpg&theme=tokyonight&hide_border=true" /></a>
-  <a href="https://github.com/wanyan2333/dorablog"><img src="https://github-stats-extended.vercel.app/api/pin/?username=wanyan2333&repo=dorablog&theme=tokyonight&hide_border=true" /></a>
-</p>
-
-## 🤖 AI 工具箱
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=claude&logoColor=white" />
-  <img src="https://img.shields.io/badge/Anthropic%20API-191919?style=for-the-badge&logo=anthropic&logoColor=white" />
-  <img src="https://img.shields.io/badge/ChatGPT-10A37F?style=for-the-badge&logo=openai&logoColor=white" />
-  <img src="https://img.shields.io/badge/GitHub%20Copilot-000000?style=for-the-badge&logo=githubcopilot&logoColor=white" />
-  <img src="https://img.shields.io/badge/Cursor-111111?style=for-the-badge&logo=cursor&logoColor=white" />
-  <img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
-  <img src="https://img.shields.io/badge/Ollama-FFFFFF?style=for-the-badge&logo=ollama&logoColor=black" />
-  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" />
-</p>
-
-## 🛠 技术栈
-
-<!-- 在 i= 后面增删图标名，完整列表见 https://skillicons.dev -->
-<p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=js,ts,react,nodejs,express,mongodb,python,html,css,git,github,docker,linux,vscode&perline=7" />
-  </a>
-</p>
-
-## 📊 GitHub 统计
-
-<p align="center">
-  <img height="170" src="https://github-stats-extended.vercel.app/api?username=wanyan2333&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" />
-  <img height="170" src="https://github-stats-extended.vercel.app/api/top-langs?username=wanyan2333&layout=compact&theme=tokyonight&hide_border=true&langs_count=6" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=wanyan2333&theme=tokyonight&hide_border=true" />
-</p>
-
-## 🌆 3D 贡献城市
-
-<!-- 由 .github/workflows/profile-3d.yml 生成；可换成 profile-season-animate.svg / profile-green-animate.svg 等 -->
-<p align="center">
-  <img src="./profile-3d-contrib/profile-night-rainbow.svg" />
-</p>
-
-## 🐍 贡献贪吃蛇
-
-<!-- 由 .github/workflows/snake.yml 生成到 output 分支 -->
+<!-- Terminal card: regenerated daily by .github/workflows/profile.yml (edit PROFILE in .github/scripts/neofetch_card.py) -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/output/github-contribution-grid-snake.svg" />
-    <img alt="github contribution snake" src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/output/github-contribution-grid-snake.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/neofetch-dark.svg" />
+    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/neofetch-light.svg" alt="wanyan2333 — neofetch-style profile card" width="100%" />
   </picture>
 </p>
 
-<details>
-<summary>🛰 For AI agents（给读这个主页的 AI 看的）</summary>
+<br />
 
-```yaml
-handle: wanyan2333
-role: AI × Web × IoT Developer
-interests: [RAG, LLM apps, full-stack web, IoT, game dev]
-featured_repos: [plc-rag-assistant, virtual-fence-collar, the-last-answer-quiz-rpg, dorablog]
-open_to: [open-source collaboration, AI tooling]
-```
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=js,ts,react,nodejs,express,mongodb,python,html,css,git,github,docker,linux,vscode&perline=14" alt="Tech stack" />
+  </a>
+</p>
+
+<br />
+
+<h3 align="center">Play Connect Four with me</h3>
+<p align="center"><sub>Pick a column below. It opens an issue — just hit <b>Create</b> and the board updates in about a minute.<br>Anyone can play. Purple and green take turns.</sub></p>
+
+<!--C4_START-->
+<p align="center"><a href="https://github.com/wanyan2333/wanyan2333/issues/new?title=c4%7Cdrop%7C1&body=Just%20press%20%2A%2ACreate%2A%2A%20%E2%80%94%20the%20move%20is%20made%20automatically%20within%20a%20minute.%20You%20don%27t%20need%20to%20write%20anything."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col1-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col1-light.svg?v=1000" width="56" alt="Drop in column 1"></picture></a><a href="https://github.com/wanyan2333/wanyan2333/issues/new?title=c4%7Cdrop%7C2&body=Just%20press%20%2A%2ACreate%2A%2A%20%E2%80%94%20the%20move%20is%20made%20automatically%20within%20a%20minute.%20You%20don%27t%20need%20to%20write%20anything."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col2-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col2-light.svg?v=1000" width="56" alt="Drop in column 2"></picture></a><a href="https://github.com/wanyan2333/wanyan2333/issues/new?title=c4%7Cdrop%7C3&body=Just%20press%20%2A%2ACreate%2A%2A%20%E2%80%94%20the%20move%20is%20made%20automatically%20within%20a%20minute.%20You%20don%27t%20need%20to%20write%20anything."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col3-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col3-light.svg?v=1000" width="56" alt="Drop in column 3"></picture></a><a href="https://github.com/wanyan2333/wanyan2333/issues/new?title=c4%7Cdrop%7C4&body=Just%20press%20%2A%2ACreate%2A%2A%20%E2%80%94%20the%20move%20is%20made%20automatically%20within%20a%20minute.%20You%20don%27t%20need%20to%20write%20anything."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col4-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col4-light.svg?v=1000" width="56" alt="Drop in column 4"></picture></a><a href="https://github.com/wanyan2333/wanyan2333/issues/new?title=c4%7Cdrop%7C5&body=Just%20press%20%2A%2ACreate%2A%2A%20%E2%80%94%20the%20move%20is%20made%20automatically%20within%20a%20minute.%20You%20don%27t%20need%20to%20write%20anything."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col5-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col5-light.svg?v=1000" width="56" alt="Drop in column 5"></picture></a><a href="https://github.com/wanyan2333/wanyan2333/issues/new?title=c4%7Cdrop%7C6&body=Just%20press%20%2A%2ACreate%2A%2A%20%E2%80%94%20the%20move%20is%20made%20automatically%20within%20a%20minute.%20You%20don%27t%20need%20to%20write%20anything."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col6-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col6-light.svg?v=1000" width="56" alt="Drop in column 6"></picture></a><a href="https://github.com/wanyan2333/wanyan2333/issues/new?title=c4%7Cdrop%7C7&body=Just%20press%20%2A%2ACreate%2A%2A%20%E2%80%94%20the%20move%20is%20made%20automatically%20within%20a%20minute.%20You%20don%27t%20need%20to%20write%20anything."><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col7-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/col7-light.svg?v=1000" width="56" alt="Drop in column 7"></picture></a></p>
+<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/board-dark.svg?v=1000"><img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/c4/board-light.svg?v=1000" width="416" alt="Connect Four board"></picture></p>
+<p align="center"><sub>Game #1 &nbsp;·&nbsp; <b>Purple</b> to move &nbsp;·&nbsp; click a column to drop a piece</sub><br><sub>No moves yet — be the first!</sub></p>
+
+<details>
+<summary><sub>Recent moves &amp; top players</sub></summary>
+
+| When | Piece | Column | Player |
+| :--- | :--- | :---: | :--- |
+| – | – | – | – |
+
+| Player | Moves |
+| :--- | ---: |
+| – | – |
 
 </details>
+<!--C4_END-->
 
-<!-- 底部波浪 -->
+<br />
+
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F0C29,50:7F5AF0,100:2CB67D&height=120&section=footer" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/output/github-contribution-grid-snake-dark.svg" />
+    <img alt="Contribution snake" src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/output/github-contribution-grid-snake.svg" />
+  </picture>
 </p>
