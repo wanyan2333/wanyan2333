@@ -239,6 +239,19 @@ def main():
         with open(os.path.join(OUT_DIR, f"neofetch-{theme}.svg"), "w", encoding="utf-8") as f:
             f.write(svg(stats, theme))
     print("wrote", ", ".join(f"{OUT_DIR}/neofetch-{t}.svg" for t in THEMES), json.dumps(stats))
+    if "--mock" not in sys.argv:
+        bust_readme_cache()
+
+
+def bust_readme_cache():
+    """Give the card URLs in README a fresh ?v= so GitHub's image cache shows the new card."""
+    import re, time
+    with open("README.md", encoding="utf-8") as f:
+        readme = f.read()
+    new = re.sub(r"(assets/neofetch-(?:dark|light)\.svg)(\?v=\d+)?", rf"\g<1>?v={int(time.time())}", readme)
+    if new != readme:
+        with open("README.md", "w", encoding="utf-8") as f:
+            f.write(new)
 
 
 if __name__ == "__main__":
