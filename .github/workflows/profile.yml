@@ -1,4 +1,4 @@
-# Regenerates the terminal card (live stats) and the Space Shooter animation.
+# Regenerates the terminal card with live stats.
 name: Profile visuals
 
 on:
@@ -21,7 +21,7 @@ concurrency:
 jobs:
   card:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
 
@@ -35,19 +35,11 @@ jobs:
           GH_USER: ${{ github.repository_owner }}
         run: python .github/scripts/neofetch_card.py
 
-      - name: Render Space Shooter
-        uses: czl9707/gh-space-shooter@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          output-path: assets/space-shooter.gif
-          fps: "30"
-          no-commit: "true"
-
       - name: Commit & push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/neofetch-*.svg assets/space-shooter.gif
+          git add assets/neofetch-*.svg
           git diff --cached --quiet && exit 0
           git commit -m "chore: refresh profile visuals"
           for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
