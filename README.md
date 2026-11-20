@@ -28,16 +28,6 @@ class Wanyan:
     motto     = "Prompt → Code → Ship"
 ```
 
-## 🧠 AI 日报
-
-> 下面这段由 Claude 每天读取我最近的 GitHub 动态后自动生成（`.github/workflows/ai-daily.yml`）
-
-<!--AI_DAILY_START-->
-> 🤖 **AI 日报 · 等待第一次生成**
->
-> 配好 `ANTHROPIC_API_KEY` 并运行一次 “AI Daily” 工作流后，这里会出现 Claude 写的今日观察。
-<!--AI_DAILY_END-->
-
 ## 🚀 精选项目
 
 <p align="center">
