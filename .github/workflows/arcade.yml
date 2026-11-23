@@ -1,12 +1,15 @@
-# 每天自动把你的贡献图生成成一条贪吃蛇动画，结果推送到 output 分支
-name: Generate Snake
+# Turns the contribution graph into three animated games (Snake, Breakout, Bomberman)
+# and publishes the SVGs to the `output` branch, once a day.
+name: Arcade
 
 on:
   schedule:
-    - cron: "0 0 * * *"   # 每天 UTC 0 点（北京时间 8 点）跑一次
-  workflow_dispatch:       # 允许在 Actions 页面手动点击运行
+    - cron: "41 0 * * *"   # daily, 00:41 UTC
+  workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - ".github/workflows/arcade.yml"
 
 permissions:
   contents: write
@@ -16,13 +19,24 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Generate snake SVGs
+      - name: Snake
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      - name: Breakout + Bomberman
+        uses: abozanona/pacman-contribution-graph@v5.3.2
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          games: "breakout,bomberman"
+          hide_month_labels: "true"
+
+      - name: List outputs
+        run: ls -la dist
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
