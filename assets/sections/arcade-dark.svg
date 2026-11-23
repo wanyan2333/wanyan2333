@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="985" height="44" viewBox="0 0 985 44">
+<defs>
+  <linearGradient id="sweep" x1="0" x2="1">
+    <stop offset="0" stop-color="#7F5AF0" stop-opacity="0"/>
+    <stop offset=".45" stop-color="#7F5AF0" stop-opacity="1"/>
+    <stop offset=".55" stop-color="#2CB67D" stop-opacity="1"/>
+    <stop offset="1" stop-color="#2CB67D" stop-opacity="0"/>
+  </linearGradient>
+  <clipPath id="lines">
+    <rect x="0" y="21.0" width="443.3" height="2"/>
+    <rect x="549.5" y="21.0" width="435.5" height="2"/>
+  </clipPath>
+</defs>
+<style>
+  .glow{animation:sweep 5.5s cubic-bezier(.45,0,.55,1) infinite}
+  @keyframes sweep{from{transform:translateX(-260px)}to{transform:translateX(1045px)}}
+  .cur{animation:blink 1.1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+  .lbl{opacity:0;animation:in .6s ease .2s forwards}@keyframes in{to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.glow{animation:none;opacity:0}.cur{animation:none}.lbl{animation:none;opacity:1}}
+</style>
+<g clip-path="url(#lines)">
+  <rect x="0" y="21.5" width="985" height="1" fill="#30363d"/>
+  <rect class="glow" x="0" y="21.0" width="200" height="2" fill="url(#sweep)"/>
+</g>
+<g class="lbl" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13">
+  <text x="488.6" y="26.5" text-anchor="middle" fill="#8b949e" xml:space="preserve">~/arcade</text>
+  <rect class="cur" x="522.8" y="15.0" width="6.8" height="14" fill="#2CB67D"/>
+</g>
+</svg>
