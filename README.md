@@ -9,8 +9,8 @@
 <!-- Terminal card: regenerated daily by .github/workflows/profile.yml (edit PROFILE in .github/scripts/neofetch_card.py) -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/neofetch-dark.svg?v=1795514242" />
-    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/neofetch-light.svg?v=1795514242" alt="wanyan2333 — neofetch-style profile card" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/neofetch-dark.svg?v=1795572592" />
+    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/neofetch-light.svg?v=1795572592" alt="wanyan2333 — neofetch-style profile card" width="100%" />
   </picture>
 </p>
 
