@@ -25,7 +25,6 @@ PROFILE = {
     "Motto": "Prompt -> Code -> Ship",
 }
 
-ART_STYLE = os.environ.get("ART_STYLE", "dots")   # "dots" (braille-style) or "blocks"
 ART_DIR = "assets/art"
 
 QUERY = """
@@ -97,9 +96,9 @@ def uptime(created):
 
 THEMES = {
     "dark": dict(bg="#0d1117", bar="#161b22", border="#30363d", fg="#c9d1d9", key="#ffa657", dots="#484f58",
-                 val="#a5d6ff", head="#7ee787", mute="#8b949e", prompt="#7F5AF0", art=("#7F5AF0", "#2CB67D"), face="#e6edf3"),
+                 val="#a5d6ff", head="#ff7a9c", mute="#8b949e", prompt="#ff8a3d", light=False),
     "light": dict(bg="#ffffff", bar="#f6f8fa", border="#d0d7de", fg="#24292f", key="#953800", dots="#afb8c1",
-                  val="#0a3069", head="#116329", mute="#57606a", prompt="#6639ba", art=("#6639ba", "#1a7f37"), face="#afb8c1"),
+                  val="#0a3069", head="#d6336c", mute="#57606a", prompt="#e8590c", light=True),
 }
 
 W, LH, FS = 985, 20, 14
@@ -132,32 +131,45 @@ def build_lines(s):
 
 
 def art_svg(t, x0, y0, w, h, delay):
-    """Penguin portrait as braille-style dots or shaded blocks, revealed top-to-bottom."""
-    rows = open(f"{ART_DIR}/penguin-{ART_STYLE}.txt", encoding="utf-8").read().split("\n")
-    out = [f'<linearGradient id="artg" gradientUnits="userSpaceOnUse" x1="{x0}" y1="{y0}" x2="{x0 + w}" y2="{y0 + h}">'
-           f'<stop offset="0" stop-color="{t["art"][0]}"/><stop offset="1" stop-color="{t["art"][1]}"/></linearGradient>']
-    if ART_STYLE == "dots":
-        sx, sy = 4.2, 5.0
-        ox = x0 + (w - len(rows[0]) * sx) / 2
-        oy = y0 + (h - len(rows) * sy) / 2
-        for r, line in enumerate(rows):
-            d = f'style="animation-delay:{delay + r * 0.025:.3f}s"'
-            for ch, stroke in (("c", "url(#artg)"), ("f", t["face"])):
-                pts = "".join(f"M{ox + c * sx:.1f} {oy + r * sy:.1f}h0" for c, v in enumerate(line) if v == ch)
-                if pts:
-                    out.append(f'<path class="l" {d} d="{pts}" stroke="{stroke}" stroke-width="3" stroke-linecap="round"/>')
-    else:
-        cw, chh = 8.4, 10.0
-        ox = x0 + (w - len(rows[0]) * cw) / 2
-        oy = y0 + (h - len(rows) * chh) / 2
-        levels = {"#": ("url(#artg)", 1), "=": ("url(#artg)", .55), "-": (t["face"], .45), "+": (t["face"], .9)}
-        for r, line in enumerate(rows):
-            d = f'style="animation-delay:{delay + r * 0.05:.3f}s"'
-            for ch, (fill, op) in levels.items():
-                pts = "".join(f"M{ox + c * cw:.1f} {oy + r * chh:.1f}h{cw - 1:.1f}v{chh - 1:.1f}h-{cw - 1:.1f}z" for c, v in enumerate(line) if v == ch)
-                if pts:
-                    out.append(f'<path class="l" {d} d="{pts}" fill="{fill}" fill-opacity="{op}"/>')
+    """Avatar portrait as full-colour LED-style dots, revealed top-to-bottom.
+
+    assets/art/avatar-color.txt: first line is the palette (hex colours), then one
+    row per line where each character indexes the palette and "." is empty.
+    """
+    lines = open(f"{ART_DIR}/avatar-color.txt", encoding="utf-8").read().split("\n")
+    palette, rows = lines[0].split(), lines[1:]
+    palette = [shade(c) if t["light"] else brighten(c) for c in palette]
+    chars = "0123456789abcdefghijklmnopqrstuvwxyz"
+    sx, sy = 3.6, 4.3
+    ox = x0 + (w - len(rows[0]) * sx) / 2 + sx / 2
+    oy = y0 + (h - len(rows) * sy) / 2 + sy / 2
+    out = []
+    for r, line in enumerate(rows):
+        d = f'style="animation-delay:{delay + r * 0.02:.3f}s"'
+        for i, colour in enumerate(palette):
+            pts = "".join(f"M{ox + c * sx:.1f} {oy + r * sy:.1f}h0" for c, v in enumerate(line) if v == chars[i])
+            if pts:
+                out.append(f'<path class="l" {d} d="{pts}" stroke="{colour}" stroke-width="3.3" stroke-linecap="round"/>')
     return out
+
+
+def brighten(hex_colour):
+    """Lift colours a little on the dark card: dots with gaps read darker than solid fills."""
+    import colorsys
+    r, g, b = (int(hex_colour[i:i + 2], 16) / 255 for i in (1, 3, 5))
+    h, s, v = colorsys.rgb_to_hsv(r, g, b)
+    if v < 0.3:  # keep eyes / ribbon dark
+        return hex_colour
+    r, g, b = colorsys.hsv_to_rgb(h, min(1, s * 1.08), min(1, v * 1.18 + 0.04))
+    return "#%02x%02x%02x" % (round(r * 255), round(g * 255), round(b * 255))
+
+
+def shade(hex_colour):
+    """Darken very light colours a touch so they still read on a white card."""
+    r, g, b = (int(hex_colour[i:i + 2], 16) for i in (1, 3, 5))
+    if 0.299 * r + 0.587 * g + 0.114 * b > 200:
+        r, g, b = (round(v * 0.9) for v in (r, g, b))
+    return f"#{r:02x}{g:02x}{b:02x}"
 
 
 def svg(s, theme):
@@ -175,8 +187,6 @@ def svg(s, theme):
            "@keyframes type{to{clip-path:inset(0 0 0 0)}}",
            "@media (prefers-reduced-motion:reduce){.l,.typed{animation:none;opacity:1;clip-path:none}.cur{animation:none}}",
            "</style>",
-           f'<defs><linearGradient id="art_unused" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{t["art"][0]}"/>'
-           f'<stop offset="1" stop-color="{t["art"][1]}"/></linearGradient></defs>',
            f'<rect x=".5" y=".5" width="{W-1}" height="{H-1}" rx="12" fill="{t["bg"]}" stroke="{t["border"]}"/>',
            f'<path d="M.5 12.5a12 12 0 0 1 12-12h{W-25}a12 12 0 0 1 12 12V36H.5z" fill="{t["bar"]}"/>',
            f'<line x1="0" y1="36" x2="{W}" y2="36" stroke="{t["border"]}"/>']

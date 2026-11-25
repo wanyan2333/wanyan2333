@@ -18,8 +18,8 @@ W, H = 985, 44
 FS, CHAR_W = 13, 13 * 0.6
 
 THEMES = {
-    "dark": dict(line="#30363d", text="#8b949e", accent="#7F5AF0", accent2="#2CB67D", bg="#0d1117"),
-    "light": dict(line="#d0d7de", text="#57606a", accent="#8250df", accent2="#1a7f37", bg="#ffffff"),
+    "dark": dict(line="#30363d", text="#8b949e", accent="#FF8A3D", accent2="#FF4F8B", bg="#0d1117"),
+    "light": dict(line="#d0d7de", text="#57606a", accent="#F76B15", accent2="#E8457A", bg="#ffffff"),
 }
 
 

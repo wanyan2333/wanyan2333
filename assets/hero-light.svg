@@ -1,15 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="985" height="220" viewBox="0 0 985 220">
 <defs>
   <linearGradient id="ink" x1="0" x2="1">
-    <stop offset="0" stop-color="#8250df"/><stop offset="1" stop-color="#1a7f37"/>
+    <stop offset="0" stop-color="#F76B15"/><stop offset="1" stop-color="#E8457A"/>
   </linearGradient>
   <radialGradient id="glow" cx=".5" cy=".5" r=".5">
-    <stop offset="0" stop-color="#8250df" stop-opacity=".28"/>
-    <stop offset=".55" stop-color="#1a7f37" stop-opacity=".10"/>
+    <stop offset="0" stop-color="#F76B15" stop-opacity=".28"/>
+    <stop offset=".55" stop-color="#E8457A" stop-opacity=".10"/>
     <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
   </radialGradient>
   <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#eaeef2"/></pattern>
   <clipPath id="card"><rect width="985" height="220" rx="12"/></clipPath>
+  <clipPath id="name"><text x="492.5" y="122" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="96" font-weight="800" letter-spacing="-2">wanyan</text></clipPath>
+  <linearGradient id="shine" x1="0" x2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
 </defs>
 <style>
   .draw{fill:transparent;stroke:url(#ink);stroke-width:1.6;stroke-dasharray:900;stroke-dashoffset:900;
@@ -19,11 +23,13 @@
   @keyframes show{to{opacity:1}}
   .sub{opacity:0;animation:up .8s ease 2.6s forwards}
   @keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .glint{transform:translateX(-200px);animation:glint 6s cubic-bezier(.45,0,.55,1) 3.2s infinite}
+  @keyframes glint{0%{transform:translateX(-200px) skewX(-20deg)}35%,100%{transform:translateX(1045px) skewX(-20deg)}}
   .orb{animation:drift 9s ease-in-out infinite alternate}
   @keyframes drift{from{transform:translateX(-260px)}to{transform:translateX(260px)}}
   .line{stroke-dasharray:6 10;animation:flow 1.2s linear infinite}
   @keyframes flow{to{stroke-dashoffset:-16}}
-  @media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}.fill{animation:none;opacity:1}.sub{animation:none;opacity:1}.orb,.line{animation:none}}
+  @media (prefers-reduced-motion:reduce){.draw{animation:none;stroke-dashoffset:0}.fill{animation:none;opacity:1}.sub{animation:none;opacity:1}.orb,.line,.glint{animation:none}.glint{display:none}}
 </style>
 <g clip-path="url(#card)">
   <rect width="985" height="220" fill="#ffffff"/>
@@ -34,5 +40,6 @@
 <rect x=".5" y=".5" width="984" height="219" rx="12" fill="none" stroke="#d0d7de"/>
 <text class="fill" fill="url(#ink)" x="492.5" y="122" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="96" font-weight="800" letter-spacing="-2">wanyan</text>
 <text class="draw" x="492.5" y="122" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="96" font-weight="800" letter-spacing="-2">wanyan</text>
+<g clip-path="url(#name)"><rect class="glint" x="0" y="20" width="140" height="130" fill="url(#shine)"/></g>
 <text class="sub" x="492.5" y="164" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="15" fill="#57606a" letter-spacing=".5">AI  ·  Web  ·  IoT  —  building things that think</text>
 </svg>

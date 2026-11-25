@@ -1,8 +1,8 @@
 <!-- Hero banner: edit NAME / TAGLINE in .github/scripts/hero.py -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/hero-dark.svg?v=1795139742" />
-    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/hero-light.svg?v=1795139742" alt="wanyan — AI · Web · IoT" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/hero-dark.svg?v=1795572581" />
+    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/hero-light.svg?v=1795572581" alt="wanyan — AI · Web · IoT" width="100%" />
   </picture>
 </p>
 
@@ -17,8 +17,8 @@
 <!-- Section dividers: edit labels in .github/scripts/sections.py -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/stack-dark.svg?v=1795401321" />
-    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/stack-light.svg?v=1795401321" alt="~/stack" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/stack-dark.svg?v=1795572581" />
+    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/stack-light.svg?v=1795572581" alt="~/stack" width="100%" />
   </picture>
 </p>
 
@@ -35,8 +35,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/arcade-dark.svg?v=1795401321" />
-    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/arcade-light.svg?v=1795401321" alt="~/arcade" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/arcade-dark.svg?v=1795572581" />
+    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/arcade-light.svg?v=1795572581" alt="~/arcade" width="100%" />
   </picture>
 </p>
 
@@ -64,7 +64,7 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/footer-dark.svg?v=1795401321" />
-    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/footer-light.svg?v=1795401321" alt="exit 0 · thanks for stopping by" width="100%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/footer-dark.svg?v=1795572581" />
+    <img src="https://raw.githubusercontent.com/wanyan2333/wanyan2333/main/assets/sections/footer-light.svg?v=1795572581" alt="exit 0 · thanks for stopping by" width="100%" />
   </picture>
 </p>
